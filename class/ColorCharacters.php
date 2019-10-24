@@ -24,6 +24,9 @@ class ColorCharacters
 	protected function setData($data)
 	{
 		$this->data = $data;
+
+		var_dump($this->data);
+		die();
 	}
 
 	protected function prepareData()
