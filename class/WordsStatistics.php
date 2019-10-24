@@ -40,8 +40,8 @@ class WordsStatistics
 				continue;
 			}
 
-			$currentCharact = mb_strtolower(htmlspecialchars($splitedWord[$i]));
-			$nextCharact = mb_strtolower(htmlspecialchars($splitedWord[$i+1]));
+			$currentCharact = strtolower(htmlspecialchars($splitedWord[$i]));
+			$nextCharact = strtolower(htmlspecialchars($splitedWord[$i+1]));
 
 
 			// Si le caractère courant ou le suivant n'a pas un bon format
@@ -77,8 +77,6 @@ class WordsStatistics
 		foreach ($data as &$subData) {
 			ksort($subData);
 		}
-
-		var_dump($data);
 
 		return $data;
 	}

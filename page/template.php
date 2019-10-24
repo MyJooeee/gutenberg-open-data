@@ -8,7 +8,7 @@
 </head>
 <body>
  
-	<?php // echo $data; ?>
+	<?php echo $data; ?>
 
 </body>
 </html>
