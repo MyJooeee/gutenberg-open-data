@@ -2,6 +2,9 @@
 
 class DrawCellsService
 {
+
+	protected $wordsStatistics;
+
 	public function __construct($wordsStatisticsService)
 	{
 		$this->wordsStatistics = $wordsStatisticsService;
