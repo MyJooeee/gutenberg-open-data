@@ -9,4 +9,6 @@ $colorCharacters = new ColorCharacters($wordsStatistics); // injection de dépen
 
 $data = $colorCharacters->drawCells();
 
-require_once('page/template.php');
+var_dump($data);
+
+// require_once('page/template.php');
