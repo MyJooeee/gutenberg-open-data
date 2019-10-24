@@ -1,8 +1,9 @@
 <?php
 
-class WordsStatistics
+class WordsStatisticsService
 {
 	protected $file;
+	protected $alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 	protected $arrayStats = [];
 
 	public function __construct($file)
@@ -10,7 +11,7 @@ class WordsStatistics
 		$this->file = $file;
 	}
 
-	public function readCSVFile()
+	public function getDataFromCSVFile()
 	{
 		if (($handle = fopen($this->file, "r")) !== FALSE) {
     		while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
@@ -22,6 +23,8 @@ class WordsStatistics
     	fclose($handle);
 
 		}
+
+		$this->finalizeData();
 
 		return $this->sortArray();
 
@@ -65,6 +68,20 @@ class WordsStatistics
 		}
 	}
 
+	protected function finalizeData()
+	{
+		foreach ($this->alphabet as $key => $firstLevel) {
+			foreach ($this->alphabet as $key => $secondLevel) {
+
+				if(empty($this->arrayStats[$firstLevel][$secondLevel])) {
+					$this->arrayStats[$firstLevel][$secondLevel] = 0;
+				}
+			}
+		}
+
+		return $this->arrayStats;
+	}
+
 	public function sortArray($data = null) 
 	{
 
@@ -74,11 +91,17 @@ class WordsStatistics
 
 		ksort($data);
 	
-		foreach ($data as &$subData) {
+
+		foreach ($data as &$subData) { // passage par référence : subdata de data est trié alphabétiquement
 			ksort($subData);
 		}
 
 		return $data;
+	}
+
+	public function getAlphabet()
+	{
+		return $this->alphabet;
 	}
 
 }

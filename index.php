@@ -1,12 +1,10 @@
 <?php
 
-require_once('class/WordsStatistics.php');
-require_once('class/ColorCharacters.php');
+require_once('class/WordsStatisticsService.php');
+require_once('class/DrawCellsService.php');
 
-$wordsStatistics = new WordsStatistics('file/mots_FR.csv');
+$wordsStatsService = new WordsStatisticsService('file/full_data_words_FR.csv');
 
-$colorCharacters = new ColorCharacters($wordsStatistics); // injection de dépendances
-
-$data = $colorCharacters->drawCells();
+$drawCellsService = new DrawCellsService($wordsStatsService); // injection de dépendances
 
 require_once('page/template.php');

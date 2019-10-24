@@ -1,48 +1,17 @@
 <?php
 
-class ColorCharacters
+class DrawCellsService
 {
-	protected $data = [];
-
-	protected $alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
-
-	protected $wordsStatictics;
-
-	public function __construct($wordsStatictics)
+	public function __construct($wordsStatisticsService)
 	{
-		$this->wordsStatictics = $wordsStatictics;
+		$this->wordsStatistics = $wordsStatisticsService;
 	}
 
 	public function drawCells()
 	{
-		$this->setData($this->wordsStatictics->readCSVFile());
-		$this->prepareData();
 
-		return $this->colorData();
-	}
+		$data = $this->wordsStatistics->getDataFromCSVFile();
 
-	protected function setData($data)
-	{
-		$this->data = $data;
-	}
-
-	protected function prepareData()
-	{
-
-		foreach ($this->alphabet as $key => $firstLevel) {
-			foreach ($this->alphabet as $key => $secondLevel) {
-
-				if(empty($this->data[$firstLevel][$secondLevel])) {
-					$this->data[$firstLevel][$secondLevel] = 0;
-				}
-			}
-		}
-
-		$this->setData($this->wordsStatictics->sortArray($this->data));
-	}
-
-	protected function colorData()
-	{
 		$coloredData = '<table>
 							<thead class=\'letters\'>
 	    						<tr>
@@ -59,10 +28,10 @@ class ColorCharacters
 							<tbody>';
 
 
-		foreach ($this->alphabet as $keyFirstLevel) {
+		foreach ($this->wordsStatistics->getAlphabet() as $keyFirstLevel) {
 			$coloredData .= '		<tr> <td class=\'letters\'>' . $keyFirstLevel . '</td>';
-			foreach ($this->alphabet as $keySecondLevel) {
-				$coloredData .= '<td style="background-color:'. $this->getColor($this->data[$keyFirstLevel][$keySecondLevel]).'">' . $this->data[$keyFirstLevel][$keySecondLevel] . '</td>' ;
+			foreach ($this->wordsStatistics->getAlphabet() as $keySecondLevel) {
+				$coloredData .= '<td style="background-color:'. $this->getColor($data[$keyFirstLevel][$keySecondLevel]).'">' . $data[$keyFirstLevel][$keySecondLevel] . '</td>' ;
 			}
 			$coloredData .= '</tr>';
 		}
