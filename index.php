@@ -7,6 +7,6 @@ $wordsStatistics = new WordsStatistics('file/partialData.csv');
 
 $colorCharacters = new ColorCharacters($wordsStatistics); // injection de dépendances
 
-// $data = $colorCharacters->drawCells();
+$colorCharacters->drawCells();
 
 require_once('page/template.php');

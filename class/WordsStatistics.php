@@ -23,8 +23,6 @@ class WordsStatistics
 
 		}
 
-		var_dump($this->sortArray());
-
 		return $this->sortArray();
 
 	}
@@ -79,6 +77,8 @@ class WordsStatistics
 		foreach ($data as &$subData) {
 			ksort($subData);
 		}
+
+		var_dump($data);
 
 		return $data;
 	}
