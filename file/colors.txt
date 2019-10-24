@@ -1,0 +1,12 @@
+Rouge intense : #FF3333 + 50 000
+Orange rouge : #FF6B33  + 40 000
+Orange claire : #FFA533 + 30 000
+Jaune claire : #FFE633  + 20 000
+Jaune fluo : #FFFF33    + 10 000
+Vert fluo : #A8FF33     +  5 000
+Vert turquoise : #33FF9F +  2500
+Turquoise : #33FFE3      +  1250
+Bleu ciel : #33CEFF      +   625
+Bleu foncé : #3399FF     +   313
+Bleu nuit : #3352FF      +   156
+Noir : #000000           =     0
