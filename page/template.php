@@ -8,10 +8,7 @@
 </head>
 <body>
  
-	<?php 
-		echo 'Test';
-		// echo $colorCharacters->drawCells(); 
-	?>
+	<?php echo $data; ?>
 
 </body>
 </html>
