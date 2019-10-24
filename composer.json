@@ -1,0 +1,14 @@
+{
+    "authors": [
+
+        {
+            "name": "Jonathan Dancette",
+            "email": "dancette.jonathan@gmail.com",
+            "homepage": "https://jonathandancette.wordpress.com",
+            "role": "Developer"
+        }
+    ],
+    "require" : {
+        "php" : "^7.0"
+    }
+}
