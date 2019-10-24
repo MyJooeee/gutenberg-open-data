@@ -23,6 +23,8 @@ class WordsStatistics
 
 		}
 
+		var_dump($this->sortArray());
+
 		return $this->sortArray();
 
 	}
