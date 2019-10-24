@@ -6,4 +6,9 @@ The purpose of this project is to :
 
 Thanks to Project Gutenberg for open data.
 
-To see data logs Heroku on terminal : $ heroku logs --app <your_app>
+For help :
+https://devcenter.heroku.com/articles/logging
+
+To see data logs Heroku on terminal : 
+$ heroku logs --app <your_app>
+$ heroku logs --app <your_app> -n 1000 : 1000 lines max
