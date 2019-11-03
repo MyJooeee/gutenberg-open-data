@@ -72,8 +72,8 @@ class WordsStatisticsService extends AbstractData
 
 	protected function finalizeData()
 	{
-		foreach ($this->alphabet as $key => $firstLevel) {
-			foreach ($this->alphabet as $key => $secondLevel) {
+		foreach ($this->getAlphabet() as $key => $firstLevel) {
+			foreach ($this->getAlphabet() as $key => $secondLevel) {
 
 				if(empty($this->arrayStats[$firstLevel][$secondLevel])) {
 					$this->arrayStats[$firstLevel][$secondLevel] = 0;
@@ -99,11 +99,6 @@ class WordsStatisticsService extends AbstractData
 		}
 
 		return $data;
-	}
-
-	public function getAlphabet()
-	{
-		return $this->alphabet;
 	}
 
 }
