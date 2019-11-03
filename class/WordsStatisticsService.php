@@ -1,6 +1,8 @@
 <?php
 
-class WordsStatisticsService
+require_once('class/AbstractData.php');
+
+class WordsStatisticsService extends AbstractData
 {
 	protected $file;
 	protected $alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
@@ -11,7 +13,7 @@ class WordsStatisticsService
 		$this->file = $file;
 	}
 
-	public function getDataFromCSVFile()
+	public function setDataFromCSVFile()
 	{
 		if (($handle = fopen($this->file, "r")) !== FALSE) {
     		while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
@@ -26,8 +28,8 @@ class WordsStatisticsService
 
 		$this->finalizeData();
 
-		return $this->sortArray();
-
+		// Appel méthode abstraite
+		$this->setData($this->sortArray());
 	}
 
 	protected function analyzeWord($word)
@@ -70,8 +72,8 @@ class WordsStatisticsService
 
 	protected function finalizeData()
 	{
-		foreach ($this->alphabet as $key => $firstLevel) {
-			foreach ($this->alphabet as $key => $secondLevel) {
+		foreach ($this->getAlphabet() as $key => $firstLevel) {
+			foreach ($this->getAlphabet() as $key => $secondLevel) {
 
 				if(empty($this->arrayStats[$firstLevel][$secondLevel])) {
 					$this->arrayStats[$firstLevel][$secondLevel] = 0;
@@ -97,11 +99,6 @@ class WordsStatisticsService
 		}
 
 		return $data;
-	}
-
-	public function getAlphabet()
-	{
-		return $this->alphabet;
 	}
 
 }

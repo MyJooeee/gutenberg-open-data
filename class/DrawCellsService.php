@@ -1,6 +1,8 @@
 <?php
 
-class DrawCellsService
+require_once('class/AbstractData.php');
+
+class DrawCellsService extends AbstractData
 {
 
 	protected $wordsStatistics;
@@ -13,7 +15,10 @@ class DrawCellsService
 	public function drawCells()
 	{
 
-		$data = $this->wordsStatistics->getDataFromCSVFile();
+		$this->wordsStatistics->setDataFromCSVFile();
+
+		// Appel méthoode abstraite
+		$data = $this->wordsStatistics->getData();
 
 		$coloredData = '<table>
 							<thead class=\'letters\'>
