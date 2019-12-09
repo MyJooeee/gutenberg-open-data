@@ -11,7 +11,7 @@ class RandomWordsService extends AbstractData
 		$this->data = $data;
 	}
 
-	public function getRandomStats()
+	public function getNextLetter()
 	{
 		$data = $this->data;
 
@@ -24,7 +24,7 @@ class RandomWordsService extends AbstractData
 		}
 
 		$min = $data['a'];
-		$number = rand(1, $max);
+		$number = rand($min, $max);
 
 		var_dump($data, $min, $max, $number);
 

@@ -34,7 +34,7 @@ $data = [
 */
 
 $randomWordsService = new RandomWordsService($data);
-$letter = $randomWordsService->getRandomStats();
+$letter = $randomWordsService->getNextLetter();
 var_dump($letter);
 
 require_once('page/template.php');
