@@ -5,18 +5,19 @@ require_once('class/AbstractData.php');
 class DrawCellsService extends AbstractData
 {
 
-	protected $wordsStatistics;
+	// Accès par RandomWordsService
+	public $wordsStatistics;
 
 	public function __construct($wordsStatisticsService)
 	{
 		$this->wordsStatistics = $wordsStatisticsService;
+
+		// Set les data une bonne fois pour toute
+		$this->wordsStatistics->setDataFromCSVFile();
 	}
 
 	public function drawCells()
 	{
-
-		$this->wordsStatistics->setDataFromCSVFile();
-
 		// Appel méthoode abstraite
 		$data = $this->wordsStatistics->getData();
 

@@ -6,9 +6,16 @@ class RandomWordsService extends AbstractData
 {
 	protected $data = [];
 
-	public function __construct($data)
+	protected $drawCells;
+
+	public function __construct($drawCellsService)
 	{
-		$this->data = $data;
+		$this->drawCells = $drawCellsService;
+	}
+
+	public function exploreData()
+	{
+		return $this->drawCells->wordsStatistics->getData();
 	}
 
 	public function getNextLetter()
@@ -23,7 +30,7 @@ class RandomWordsService extends AbstractData
 			$data[$key] = $max;
 		}
 
-		$min = $data['a'];
+		$min = current($data);
 		$number = rand($min, $max);
 
 		var_dump($data, $min, $max, $number);
