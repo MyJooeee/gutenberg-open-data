@@ -5,9 +5,15 @@ require_once('class/AbstractData.php');
 class DrawCellsService extends AbstractData
 {
 
-	// Accès par RandomWordsService
+	/**
+	 * Access from RandomWordsService too so public
+	 * @var service
+	 */
 	public $wordsStatistics;
 
+	/**
+	 * @param object $wordsStatisticsService
+	 */
 	public function __construct($wordsStatisticsService)
 	{
 		$this->wordsStatistics = $wordsStatisticsService;
@@ -16,6 +22,10 @@ class DrawCellsService extends AbstractData
 		$this->wordsStatistics->setDataFromCSVFile();
 	}
 
+	/**
+	 * Build an html output to visualize data
+	 * @return string
+	 */
 	public function drawCells()
 	{
 		// Appel méthoode abstraite
@@ -49,9 +59,13 @@ class DrawCellsService extends AbstractData
 							</table>';
 
 		return $coloredData;
-
 	}
 
+	/**
+	 * Get color for each range of value
+	 * @param  int $value
+	 * @return string
+	 */
 	protected function getColor($value)
 	{
 		$color = '#000000';
@@ -84,10 +98,8 @@ class DrawCellsService extends AbstractData
 			$color = '#484556';
 		} elseif ($value >= 15) {
 			$color = '#35343B';
-		} elseif($value >= 8) {
-			
 		}
-
+		
 		return $color;
 	}
 }

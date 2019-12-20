@@ -9,7 +9,5 @@ $wordsStatsService = new WordsStatisticsService('file/full_data_words_FR.csv');
 $drawCellsService = new DrawCellsService($wordsStatsService); // injection de dépendances
 
 $randomWordsService = new RandomWordsService($drawCellsService); // injection de dépendances
- 
- var_dump($randomWordsService->exploreData());
 
 require_once('page/template.php');
