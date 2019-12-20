@@ -4,15 +4,28 @@ require_once('class/AbstractData.php');
 
 class WordsStatisticsService extends AbstractData
 {
-	protected $file;
-	protected $alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+
+	/**
+	 * @var string
+	 */
+	protected $file = '';
+
+	/**
+	 * @var array
+	 */
 	protected $arrayStats = [];
 
+	/**
+	 * @param string $file
+	 */
 	public function __construct($file)
 	{
 		$this->file = $file;
 	}
 
+	/**
+	 * Read and set data from csv file (more than 300 000 lines)
+	 */
 	public function setDataFromCSVFile()
 	{
 		if (($handle = fopen($this->file, "r")) !== FALSE) {
@@ -32,6 +45,10 @@ class WordsStatisticsService extends AbstractData
 		$this->setData($this->sortArray());
 	}
 
+	/**
+	 * Analyse structure word line by line
+	 * @param  string $word
+	 */
 	protected function analyzeWord($word)
 	{
 		$splitedWord = str_split($word);
@@ -70,6 +87,10 @@ class WordsStatisticsService extends AbstractData
 		}
 	}
 
+	/**
+	 * Normalize structure data with empty letter
+	 * @return array
+	 */
 	protected function finalizeData()
 	{
 		foreach ($this->getAlphabet() as $key => $firstLevel) {
@@ -84,6 +105,11 @@ class WordsStatisticsService extends AbstractData
 		return $this->arrayStats;
 	}
 
+	/**
+	 * Sort data for the two levels
+	 * @param  array $data
+	 * @return array
+	 */
 	public function sortArray($data = null) 
 	{
 
@@ -93,7 +119,6 @@ class WordsStatisticsService extends AbstractData
 
 		ksort($data);
 	
-
 		foreach ($data as &$subData) { // passage par référence : subdata de data est trié alphabétiquement
 			ksort($subData);
 		}
