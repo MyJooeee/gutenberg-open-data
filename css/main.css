@@ -1,4 +1,4 @@
-body {
+body, #cells {
 	text-align: center;
 }
 
@@ -8,6 +8,10 @@ td {
     color : #fff;
 }
 
-.letters{
+.letters {
 	background-color: #333;
+}
+
+p {
+	text-align: justify;
 }
