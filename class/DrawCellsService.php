@@ -50,7 +50,7 @@ class DrawCellsService extends AbstractData
 		foreach ($this->wordsStatistics->getAlphabet() as $keyFirstLevel) {
 			$coloredData .= '		<tr> <td class=\'letters\'>' . $keyFirstLevel . '</td>';
 			foreach ($this->wordsStatistics->getAlphabet() as $keySecondLevel) {
-				$coloredData .= '<td style="background-color:'. $this->getColor($data[$keyFirstLevel][$keySecondLevel]).'">' . $data[$keyFirstLevel][$keySecondLevel] . '</td>' ;
+				$coloredData .= '<td style="background-color:'. $this->getColor($data[$keyFirstLevel][$keySecondLevel]).'">' . number_format($data[$keyFirstLevel][$keySecondLevel], 0, '.', ' ') . '</td>' ;
 			}
 			$coloredData .= '</tr>';
 		}
