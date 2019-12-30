@@ -40,8 +40,10 @@
 
 							echo $newWords;
 
-						?> 
+						?>
 					</p>
+
+					<p> <strong> Des mots qui ressemblent finalement pas mal au latin avec une sonorité française ! ;) </strong> </p>
 				</div>
 
 			</div>
