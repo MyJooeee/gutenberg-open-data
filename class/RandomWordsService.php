@@ -30,10 +30,26 @@ class RandomWordsService extends AbstractData
 	}
 
 	/**
+	 * Generate n words with m letters
+	 * @param  integer $words
+	 * @param  integer $letters
+	 * @return string
+	 */
+	public function numberOfWordsGenerated($words=500, $letters=7)
+	{
+		$newWords = '';
+		for ($i=0; $i < $words; $i++) {
+			$newWords .= ' '.$this->generateWord($letters);
+		}
+
+		return $newWords;
+	}
+
+	/**
 	 * @todo Data exploration to create new french words
 	 * @return array
 	 */
-	public function exploreData()
+	protected function generateWord($letters)
 	{
 		// Tirage de la première lettre du mot
 		// On récupère une clé au hasard
@@ -45,7 +61,7 @@ class RandomWordsService extends AbstractData
 		$this->processedLetter = $this->getAlphabet()[$randKey];
 
 		// Génération mots de 7 lettres
-		for($i=0; $i < 7; $i++) {
+		for($i=0; $i < $letters; $i++) {
 
 			// On envoie les probabilités de tirer la lettre consécutive pour la lettre courante
 			// $this->returnedNextLetter sera altérée suite au précédent passage, visibilité inter-méthodes
@@ -61,7 +77,7 @@ class RandomWordsService extends AbstractData
 	 * Get next character based on data statistics
 	 * @return string
 	 */
-	public function getNextLetter($data)
+	protected function getNextLetter($data)
 	{
 		asort($data);
 

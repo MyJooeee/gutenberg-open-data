@@ -29,19 +29,7 @@
 				<h2> Essai génération de mots de 7 lettres basés sur le tableau statistique</h2>
 			 
 				<div> 
-					<p>
-						<?php 
-
-							$newWords = '';
-							// Génération de 500 mots de 7 lettres
-							for($i=0; $i<500; $i++) {
-								$newWords .= ' '.$randomWordsService->exploreData();
-							}
-
-							echo $newWords;
-
-						?>
-					</p>
+					<p> <?php echo $randomWordsService->numberOfWordsGenerated(); ?> </p>
 
 					<p> <strong> Des mots qui ressemblent finalement pas mal au latin avec une sonorité française ! ;) </strong> </p>
 				</div>
