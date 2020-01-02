@@ -18,7 +18,7 @@ class RandomWordsService extends AbstractData
 	/**
 	 * @var string
 	 */
-	protected $returnedNextLetter;
+	protected $processedLetter;
 
 	/**
 	 * @param object $drawCellsService
@@ -41,18 +41,15 @@ class RandomWordsService extends AbstractData
 
 		// On sélectionne la valeur correspondante : ici la lettre
 		$newWord = '';
-		$firstLetter = $this->getAlphabet()[$randKey];
-
-		// Deuxième caractère basé sur le premier tiré au hasard
-		$nextLetter = $this->getNextLetter($this->data[$firstLetter]);
-		$newWord .= $nextLetter;
+		// Récupération de la première lettre
+		$this->processedLetter = $this->getAlphabet()[$randKey];
 
 		// Génération mots de 7 lettres
-		for($i=0; $i < 6; $i++) {
+		for($i=0; $i < 7; $i++) {
 
 			// On envoie les probabilités de tirer la lettre consécutive pour la lettre courante
-			// $this->returnedNextLetter sera altérée suite au précédent passage (visibilié toute la classe)
-			$nextLetter = $this->getNextLetter($this->data[$this->returnedNextLetter]);
+			// $this->returnedNextLetter sera altérée suite au précédent passage, visibilité inter-méthodes
+			$nextLetter = $this->getNextLetter($this->data[$this->processedLetter]);
 			$newWord .= $nextLetter;
 		}
 
@@ -77,10 +74,10 @@ class RandomWordsService extends AbstractData
 		$min = current($data);
 		$number = rand($min, $max);
 
-		foreach ($data as $this->returnedNextLetter => $value) {
+		foreach ($data as $this->processedLetter => $value) {
 
 			if($number <= $value) {
-				return  $this->returnedNextLetter;
+				return  $this->processedLetter;
 			}
 		}
 	}
