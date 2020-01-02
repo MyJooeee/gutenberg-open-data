@@ -26,11 +26,31 @@
 
 			<div>
 
-				<h2> Essai génération de mots de 7 lettres basés sur le tableau statistique</h2>
+				<h2> Essai génération de 500 mots de 4 lettres basés sur le tableau statistique</h2>
+			 
+				<div> 
+					<p> <?php echo $randomWordsService->numberOfWordsGenerated(500, 4); ?> </p>
+				</div>
+
+				<h2> Essai génération de 500 mots de 5 lettres basés sur le tableau statistique</h2>
+			 
+				<div> 
+					<p> <?php echo $randomWordsService->numberOfWordsGenerated(500, 5); ?> </p>
+				</div>
+
+				<h2> Essai génération de 500 mots de 6 lettres basés sur le tableau statistique</h2>
+			 
+				<div> 
+					<p> <?php echo $randomWordsService->numberOfWordsGenerated(500, 6); ?> </p>
+				</div>
+
+				<h2> Essai génération de 500 mots de 7 lettres basés sur le tableau statistique</h2>
 			 
 				<div> 
 					<p> <?php echo $randomWordsService->numberOfWordsGenerated(); ?> </p>
+				</div>
 
+				<div>
 					<p> <strong> Des mots qui ressemblent finalement pas mal au latin avec une sonorité française ! ;) </strong> </p>
 				</div>
 
