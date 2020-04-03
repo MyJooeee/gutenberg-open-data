@@ -28,10 +28,14 @@ class WordsStatisticsService extends AbstractData
 	 */
 	public function setDataFromCSVFile()
 	{
+		$dictionary = [];
+
 		if (($handle = fopen($this->file, "r")) !== FALSE) {
     		while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
 
 	        $this->analyzeWord($data[0]);
+			$dictionary [] = $data[0];
+
 
 	    	}
 
@@ -43,6 +47,10 @@ class WordsStatisticsService extends AbstractData
 
 		// Appel méthode abstraite
 		$this->setData($this->sortArray());
+
+		// Appel méthode abstraite
+		$this->setDictionary($dictionary);
+
 	}
 
 	/**
@@ -110,7 +118,7 @@ class WordsStatisticsService extends AbstractData
 	 * @param  array $data
 	 * @return array
 	 */
-	public function sortArray($data = null) 
+	public function sortArray($data = null)
 	{
 
 		if(is_null($data)) {
@@ -118,7 +126,7 @@ class WordsStatisticsService extends AbstractData
 		}
 
 		ksort($data);
-	
+
 		foreach ($data as &$subData) { // passage par référence : subdata de data est trié alphabétiquement
 			ksort($subData);
 		}

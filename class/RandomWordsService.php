@@ -27,6 +27,7 @@ class RandomWordsService extends AbstractData
 	{
 		$this->drawCells = $drawCellsService;
 		$this->data = $this->drawCells->wordsStatistics->getData();
+		$this->dictionary = $this->drawCells->wordsStatistics->getDictionary();
 	}
 
 	/**
@@ -67,6 +68,10 @@ class RandomWordsService extends AbstractData
 			// $this->returnedNextLetter sera altérée suite au précédent passage, visibilité inter-méthodes
 			$nextLetter = $this->getNextLetter($this->data[$this->processedLetter]);
 			$newWord .= $nextLetter;
+		}
+
+		if(array_search($newWord, $this->dictionary, true) !== false) {
+			return '<span class="red">'.$newWord.'</span>';
 		}
 
 		return $newWord;
