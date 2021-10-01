@@ -16,11 +16,6 @@ class RandomWordsService extends AbstractData
 	protected $drawCells;
 
 	/**
-	 * @var string
-	 */
-	protected $processedLetter;
-
-	/**
 	 * @param object $drawCellsService
 	 */
 	public function __construct($drawCellsService)
@@ -59,16 +54,10 @@ class RandomWordsService extends AbstractData
 		// On sélectionne la valeur correspondante : ici la lettre
 		$newWord = '';
 		// Récupération de la première lettre
-		$this->processedLetter = $this->getAlphabet()[$randKey];
+		$firstLetter = $this->getAlphabet()[$randKey];
 
 		// Génération mots de 7 lettres
-		for($i=0; $i < $letters; $i++) {
-
-			// On envoie les probabilités de tirer la lettre consécutive pour la lettre courante
-			// $this->returnedNextLetter sera altérée suite au précédent passage, visibilité inter-méthodes
-			$nextLetter = $this->getNextLetter($this->data[$this->processedLetter]);
-			$newWord .= $nextLetter;
-		}
+		$newWord = $this->getNewWord($firstLetter, $letters);
 
 		if(array_search($newWord, $this->dictionary, true) !== false) {
 			return '<span class="red">'.$newWord.'</span>';
@@ -79,11 +68,16 @@ class RandomWordsService extends AbstractData
 	}
 
 	/**
-	 * Get next character based on data statistics
-	 * @return string
+		 * Recursive function which creates the new word
+		 * based on statistic passed
+		 * @param $character char
+		 * @param $maxIteration int : word length
+		 * @return string
 	 */
-	protected function getNextLetter($data)
+	protected function getNewWord($character, $maxIteration)
 	{
+		$data = $this->data[$character];
+
 		asort($data);
 
 		$max = 0;
@@ -95,10 +89,12 @@ class RandomWordsService extends AbstractData
 		$min = current($data);
 		$number = rand($min, $max);
 
-		foreach ($data as $this->processedLetter => $value) {
+		foreach ($data as $charac => $value) {
 
 			if($number <= $value) {
-				return  $this->processedLetter;
+				if ($maxIteration === 0) return '';
+				$maxIteration --;
+				return ($charac . $this->getNewWord($charac, $maxIteration));
 			}
 		}
 	}
