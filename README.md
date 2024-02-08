@@ -6,7 +6,7 @@ The purpose of this project is to :
 
 Thanks to Project Gutenberg for open data.
 
-** Note : Fonctionnement de la fonction de tirage aléatoire :
+**Note : Fonctionnement de la fonction de tirage aléatoire** :
 
 Pour une lettre donnée, probabilité de tirer la lettre consécutive
 
