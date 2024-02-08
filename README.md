@@ -6,16 +6,6 @@ The purpose of this project is to :
 
 Thanks to Project Gutenberg for open data.
 
-For help :
-https://devcenter.heroku.com/articles/logging
-
-To see data logs Heroku on terminal :
-
-$ heroku logs --app <your_app>
-
-$ heroku logs --app <your_app> -n 1000 : 1000 lines max
-
-
 ** Note : Fonctionnement de la fonction de tirage aléatoire :
 
 Pour une lettre donnée, probabilité de tirer la lettre consécutive
