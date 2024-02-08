@@ -1,4 +1,4 @@
-Author : Jonathan Dancette
+_Author : Jonathan Dancette_
 
 The purpose of this project is to :
 - Analyze structure of french words to create statistics
