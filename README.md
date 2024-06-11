@@ -6,11 +6,11 @@ The purpose of this project is to :
 
 Thanks to Project Gutenberg for open data.
 
-**Note : Fonctionnement de la fonction de tirage aléatoire** :
+**Note: How the random draw function works**:
 
-Pour une lettre donnée, probabilité de tirer la lettre consécutive
+For a given letter, probability of drawing the consecutive letter
 
-Jeu de donnée fictif :
+Fictitious dataset:
 
 $data = [
 	'a' => 2,
@@ -18,20 +18,20 @@ $data = [
 	'c' => 4,
 ];
 
-Ici $data équivalent à :
+Here $data is equivalent to:
 
 $data = ['a', 'a', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'c', 'c', 'c', 'c'];
 
-Sur un tirage aléatoire avec équiprobabilité, de manière équivalente on a aussi :
+On a random draw with equal probability, equivalently we also have:
 
 $data = ['a', 'a', 'c', 'c', 'c', 'c', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b'];
 
-Trié par ordre d'apparition croissant, c'est ce qui nous intèresse ici
+Sorted in ascending order of appearance, that's what interests us here
 
-Equivalent à un tirage équiprobable sur 14 :
+Equivalent to an equiprobable draw out of 14:
 
 $data = [
 	'a' => 2,
 	'c' => 6,
 	'b' => 14,
-]
+];

@@ -4,7 +4,6 @@
   <meta charset="utf-8">
   <title>Analyse de la structure des mots français</title>
   <link rel="stylesheet" href="css/main.css">
-  <script src="script.js"></script>
 </head>
 <body>
 
