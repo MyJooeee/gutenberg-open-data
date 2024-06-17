@@ -12,11 +12,7 @@ For a given letter, probability of drawing the consecutive letter
 
 Fictitious dataset:
 
-$data = [
-	'a' => 2,
-	'b' => 8,
-	'c' => 4,
-];
+$data = ['a' => 2, 'b' => 8, 'c' => 4];
 
 Here $data is equivalent to:
 
@@ -30,8 +26,4 @@ Sorted in ascending order of appearance, that's what interests us here
 
 Equivalent to an equiprobable draw out of 14:
 
-$data = [
-	'a' => 2,
-	'c' => 6,
-	'b' => 14,
-];
+$data = ['a' => 2, 'c' => 6, 'b' => 14];
